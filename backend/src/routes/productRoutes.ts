@@ -12,7 +12,7 @@ import { requireAuth } from '@clerk/express';
 const router = Router();
 
 // Get /api/products => Get all products (PUBLIC)
-router.get('./', getAllProducts);
+router.get('/', getAllProducts);
 
 // GET /api/products/my - Get current user's products (protected)
 router.get('/my', requireAuth(), getMyProducts);

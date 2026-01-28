@@ -96,8 +96,8 @@ export const updateProduct = async (req: Request<{ id: string }>, res: Response)
         });
         res.status(200).json(product);
     } catch (error) {
-        console.error('Error creating product:', error);
-        res.status(500).json({ error: 'Failed to create product' });
+        console.error('Error updating product:', error);
+        res.status(500).json({ error: 'Failed to update product' });
     }
 };
 
