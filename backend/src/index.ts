@@ -9,10 +9,10 @@ import commentRoutes from './routes/commentRoutes';
 
 const app = express();
 
-app.use(cors({ origin: ENV.FRONTEND_URL, credentials: true }));
 app.use(clerkMiddleware()); //attaches auth obj to req
 app.use(express.json()); //parses JSON request bodies
 app.use(express.urlencoded({ extended: true })); //parses json data from forms
+app.use(cors({ origin: ENV.FRONTEND_URL, credentials: true }));
 
 app.get('/', (req, res) => {
     res.json({
@@ -29,5 +29,4 @@ app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/comments', commentRoutes);
 
-const port = ENV.PORT || 3000;
-+app.listen(port, () => console.log('Server running on PORT: ', port));
+app.listen(ENV.PORT, () => console.log('Server is up and running on PORT:', ENV.PORT));

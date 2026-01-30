@@ -13,23 +13,23 @@ const useUserSync = () => {
         isSuccess,
     } = useMutation({ mutationFn: syncUser });
 
+    const email = user?.primaryEmailAddress?.emailAddress;
+    const name = user?.fullName || user?.firstName;
+    const imageUrl = user?.imageUrl;
     useEffect(() => {
-        if (isSignedIn && user && !isPending && !isSuccess) {
-            const email = user.primaryEmailAddress?.emailAddress;
-            const name = user.fullName || user.firstName;
+        if (!isSignedIn || isPending) return;
 
-            // Guard clause to ensure required fields exist
-            if (!email || !name) {
-                console.error('Missing required user data');
-                return;
-            }
-
-            syncUserMutation({
-                email,
-                name,
-                imageUrl: user.imageUrl,
-            });
+        // Guard clause to ensure required fields exist
+        if (!email || !name) {
+            console.error('Missing required user data');
+            return;
         }
+
+        syncUserMutation({
+            email,
+            name,
+            imageUrl,
+        });
     }, [isSignedIn, user, syncUserMutation, isPending, isSuccess]);
     return { isSynced: isSuccess };
 };
