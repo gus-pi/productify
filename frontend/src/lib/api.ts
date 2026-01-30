@@ -46,7 +46,7 @@ export const createComment = async ({
     productId: string;
     content: string;
 }) => {
-    const { data } = await api.post(`/products/${productId}`, content);
+    const { data } = await api.post(`/products/${productId}`, { content });
     return data;
 };
 

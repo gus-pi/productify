@@ -29,4 +29,5 @@ app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/comments', commentRoutes);
 
-app.listen(3000, () => console.log('Server running on PORT: ', ENV.PORT));
+const port = ENV.PORT || 3000;
++app.listen(port, () => console.log('Server running on PORT: ', port));

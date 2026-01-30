@@ -15,9 +15,18 @@ const useUserSync = () => {
 
     useEffect(() => {
         if (isSignedIn && user && !isPending && !isSuccess) {
+            const email = user.primaryEmailAddress?.emailAddress;
+            const name = user.fullName || user.firstName;
+
+            // Guard clause to ensure required fields exist
+            if (!email || !name) {
+                console.error('Missing required user data');
+                return;
+            }
+
             syncUserMutation({
-                email: user.primaryEmailAddress?.emailAddress!,
-                name: user.fullName || user.firstName!,
+                email,
+                name,
                 imageUrl: user.imageUrl,
             });
         }
