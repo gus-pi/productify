@@ -36,6 +36,7 @@ const BeanField = ({ count = 100 }) => {
 
 const Experience = () => {
     const mainGroup = useRef<THREE.Group>(null!);
+
     useFrame((state) => {
         const { x, y } = state.pointer;
         mainGroup.current.rotation.y = THREE.MathUtils.lerp(

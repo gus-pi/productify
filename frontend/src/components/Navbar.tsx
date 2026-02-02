@@ -1,5 +1,5 @@
-import { SignInButton, SignOutButton, SignUpButton, useAuth, UserButton } from '@clerk/clerk-react';
-import { PlusIcon, ShoppingBagIcon } from 'lucide-react';
+import { SignInButton, SignUpButton, useAuth, UserButton } from '@clerk/clerk-react';
+import { Coffee, PlusIcon } from 'lucide-react';
 import { Link } from 'react-router';
 import ThemeSelector from './ThemeSelector';
 
@@ -11,9 +11,9 @@ const Navbar = () => {
                 {/* Logo - LEFT SIDE */}
                 <div className="flex-1">
                     <Link to="/" className="btn btn-ghost gap-2">
-                        <ShoppingBagIcon className="size-5 text-primary" />
+                        <Coffee className="size-5 text-primary" />
                         <span className="text-lg font-bold uppercase tracking-tight">
-                            Vintage Bikes
+                            Coffee Parade
                         </span>
                     </Link>
                 </div>

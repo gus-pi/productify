@@ -5,10 +5,14 @@ export type User = {
 };
 
 export type Product = {
+    id?: string;
     title: string;
     description: string;
     imageUrl: string;
-    userId: string;
+    userId?: string;
+    createdAt?: string;
+    user?: User;
+    comments?: Comment[];
 };
 
 export type Comment = {
