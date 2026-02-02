@@ -17,13 +17,15 @@ const HomePage = () => {
     if (isLoading) return <LoadingSpinner />;
 
     if (error) {
-        <div role="alert" className="alert alert-error">
-            Something went wrong. Please refresh the page.
-        </div>;
+        return (
+            <div role="alert" className="alert alert-error">
+                Something went wrong. Please refresh the page.
+            </div>
+        );
     }
 
     return (
-        <div className="spacey-10">
+        <div className="space-y-16">
             {/* 3D Background Layer */}
             {/* z-0 puts it behind main (z-10) and Navbar (z-50) */}
             <div className="fixed inset-0 z-0">
@@ -71,7 +73,7 @@ const HomePage = () => {
                     </div>
                 </div>
                 {/* PRODUCTS */}
-                <div className="text-xl font-bold flex items-center gap-2 mb-4 mt-12">
+                <div className="text-xl font-bold flex items-center gap-2 mb-4">
                     <h2>All Listings</h2>
                 </div>
                 {products.length === 0 ? (

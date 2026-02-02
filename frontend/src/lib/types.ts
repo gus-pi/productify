@@ -12,7 +12,7 @@ export type Product = {
     userId?: string;
     createdAt?: string;
     user?: User;
-    comments?: [Comment];
+    comments?: Comment[];
 };
 
 export type Comment = {
