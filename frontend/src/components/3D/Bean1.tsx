@@ -38,44 +38,45 @@ export function Instances({ children, ...groupProps }: InstancesProps) {
 export function Bean001({
     spinSpeed = 1,
     rotation: initialRotation,
-    position: targetPosition,
-    delay = 0, // Optional: stagger drops (seconds)
-    ...props
+    position: targetPosition, // Destructure this out...
+    delay = 0,
+    ...props // ...so it's not in here
 }: ThreeElements['group'] & {
     spinSpeed?: number;
     delay?: number;
 }) {
     const instances = React.useContext(InstancesContext);
     const spinRef = useRef<THREE.Group>(null);
-    const dropRef = useRef<THREE.Group>(null);
+    const dropRef = useRef<THREE.Group>(null!); // Use ! to tell TS it will be assigned
 
-    // Target position (where it should end up)
     const target = useMemo(
         () => new THREE.Vector3(...(targetPosition as [number, number, number])),
         [targetPosition],
     );
-    // Start position (20 units above target)
-    const current = useRef(target.clone().add(new THREE.Vector3(0, 20, 0)));
+
+    // Initial position is high up in the sky
+    const skyPosition = useMemo(() => target.clone().add(new THREE.Vector3(0, 20, 0)), [target]);
+    const currentPos = useRef(skyPosition.clone());
 
     useFrame((state, delta) => {
-        // Spinning
         if (spinRef.current) {
             spinRef.current.rotation.y += spinSpeed * delta;
         }
 
-        // Dropping (wait for delay, then fall)
-        if (dropRef.current && state.clock.elapsedTime > delay) {
-            // Exponential ease-out for that "slotting in" feel (adjust 4 for speed)
+        if (state.clock.elapsedTime > delay) {
+            // Smoothly lerp from current (sky) to target (floor)
             const speed = 1 - Math.pow(0.001, delta * 0.2);
-            current.current.lerp(target, speed);
-            dropRef.current.position.copy(current.current);
+            currentPos.current.lerp(target, speed);
+            dropRef.current.position.copy(currentPos.current);
         }
     });
 
     if (!instances) throw new Error('Bean001 must be used inside <Instances>.');
 
     return (
-        <group ref={dropRef} {...props} dispose={null}>
+        /* 1. We manually set the initial position to the skyPosition here */
+        /* 2. We use 'props' which now EXCLUDES the target position */
+        <group ref={dropRef} position={skyPosition} {...props} dispose={null}>
             <group rotation={initialRotation}>
                 <group ref={spinRef}>
                     <instances.Bean
