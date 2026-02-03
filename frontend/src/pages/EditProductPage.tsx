@@ -12,10 +12,9 @@ const EditProductPage = () => {
     const navigate = useNavigate();
 
     const { data: product, isLoading, error } = useProduct(id ?? '');
+    const updateProduct = useUpdateProduct();
 
     if (!id) return <div>No valid id</div>;
-
-    const updateProduct = useUpdateProduct();
 
     if (isLoading) return <LoadingSpinner />;
 
