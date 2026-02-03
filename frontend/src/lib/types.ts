@@ -15,6 +15,12 @@ export type Product = {
     comments?: Comment[];
 };
 
+export type NewProduct = {
+    title: string;
+    description: string;
+    imageUrl: string;
+};
+
 export type Comment = {
     id: string;
     content: string;

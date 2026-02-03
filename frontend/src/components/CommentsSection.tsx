@@ -38,11 +38,13 @@ const CommentsSection = ({ productId, comments, currentUserId }: CommentsSection
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                         disabled={createComment.isPending}
+                        aria-label="Add a comment"
                     />
                     <button
                         type="submit"
                         className="btn btn-primary btn-sm btn-square"
                         disabled={createComment.isPending || !content.trim()}
+                        aria-label="Post comment"
                     >
                         {createComment.isPending ? (
                             <span className="loading loading-spinner loading-xs" />
@@ -98,6 +100,7 @@ const CommentsSection = ({ productId, comments, currentUserId }: CommentsSection
                                         }
                                         className="btn btn-ghost btn-xs text-error"
                                         disabled={deleteComment.isPending}
+                                        aria-label="Delete comment"
                                     >
                                         {deleteComment.isPending ? (
                                             <span className="loading loading-spinner loading-xs" />

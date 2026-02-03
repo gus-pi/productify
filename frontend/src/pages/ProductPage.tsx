@@ -3,7 +3,6 @@ import { Link, useNavigate, useParams } from 'react-router';
 import { useDeleteProduct, useProduct } from '../hooks/useProducts';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { ArrowLeftIcon, CalendarIcon, EditIcon, Trash2Icon, UserIcon } from 'lucide-react';
-import { deleteProduct } from '../lib/api';
 import CommentsSection from '../components/CommentsSection';
 
 const ProductPage = () => {
@@ -11,10 +10,10 @@ const ProductPage = () => {
     const { userId } = useAuth();
     const navigate = useNavigate();
 
-    if (!id) return <div>No valid id</div>;
-    const { data: product, isLoading, error } = useProduct(id);
+    const { data: product, isLoading, error } = useProduct(id ?? '');
 
     const deleteProduct = useDeleteProduct();
+    if (!id) return <div>No valid id</div>;
 
     const handleDelete = () => {
         if (confirm('Delete this listing permanently?')) {

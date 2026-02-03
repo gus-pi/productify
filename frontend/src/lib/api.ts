@@ -1,5 +1,5 @@
 import api from './axios';
-import type { Product, User } from './types';
+import type { NewProduct, Product, User } from './types';
 
 //USERS API
 export const syncUser = async (userData: User) => {
@@ -23,7 +23,7 @@ export const getMyProducts = async () => {
     return data;
 };
 
-export const createProduct = async (productData: Product) => {
+export const createProduct = async (productData: NewProduct) => {
     const { data } = await api.post('/products', productData);
     return data;
 };

@@ -6,7 +6,7 @@ import type { Product } from '../lib/types';
 
 const ProfilePage = () => {
     const navigate = useNavigate();
-    const { data: products, isLoading } = useMyProducts();
+    const { data: products, isLoading, error } = useMyProducts();
     const deleteProduct = useDeleteProduct();
 
     const handleDelete = (id: string) => {
@@ -14,6 +14,14 @@ const ProfilePage = () => {
     };
 
     if (isLoading) return <LoadingSpinner />;
+
+    if (error) {
+        return (
+            <div role="alert" className="alert alert-error">
+                Something went wrong. Please refresh the page.
+            </div>
+        );
+    }
 
     return (
         <div className="space-y-6">
