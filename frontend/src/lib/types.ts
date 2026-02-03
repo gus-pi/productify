@@ -5,7 +5,7 @@ export type User = {
 };
 
 export type Product = {
-    id?: string;
+    id: string;
     title: string;
     description: string;
     imageUrl: string;
@@ -15,7 +15,16 @@ export type Product = {
     comments?: Comment[];
 };
 
+export type NewProduct = {
+    title: string;
+    description: string;
+    imageUrl: string;
+};
+
 export type Comment = {
+    id: string;
     content: string;
     userId: string;
+    user: User;
+    createdAt: string;
 };

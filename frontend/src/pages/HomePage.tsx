@@ -40,14 +40,14 @@ const HomePage = () => {
             {/* Home content (still under App's z-10 shell, but this is fine) */}
             <div className="relative">
                 {/* HERO */}
-                <div className="hero backdrop-blur-sm bg-base-300/40 rounded-box overflow-hidden">
-                    <div className="hero-content flex-col lg:flex-row-reverse gap-10 py-10">
+                <div className="max-w-3xl mx-auto hero backdrop-blur-sm bg-base-300/40 rounded-box overflow-hidden px-6">
+                    <div className="hero-content flex-col lg:flex-row-reverse gap-10 py-10 ">
                         <div className="relative">
                             <div className="absolute inset-0 rounded-full scale-110" />
                             <img
                                 src="/coffee-bag.png"
                                 alt="Creator"
-                                className="relative h-64 lg:h-72 rounded-2xl shadow-2xl"
+                                className="relative h-48 lg:h-64 rounded-2xl shadow-2xl"
                             />
                         </div>
                         <div className="text-center lg:text-left">
@@ -55,7 +55,7 @@ const HomePage = () => {
                                 Show off your <span className="text-primary">coffee</span>
                             </h1>
                             <p className="py-4 text-base-content/60">
-                                Upload, discover, and connect with coffee roaster and distributors.
+                                Upload, discover, and connect with coffee roasters and distributors.
                             </p>
                             {isSignedIn ? (
                                 <Link to="/create" className="btn btn-primary btn-sm mt-2">
@@ -73,7 +73,7 @@ const HomePage = () => {
                     </div>
                 </div>
                 {/* PRODUCTS */}
-                <div className="text-xl font-bold flex items-center gap-2 mb-4">
+                <div className="text-xl font-bold flex items-center gap-2 mb-4 pt-20">
                     <h2>All Listings</h2>
                 </div>
                 {products.length === 0 ? (
