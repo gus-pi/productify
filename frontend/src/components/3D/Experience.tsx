@@ -21,7 +21,7 @@ const BeanField = ({ count = 100 }) => {
             scale: 0.8 + Math.random() * 0.8,
             // Random spin speed (some spin faster, some slower, either direction)
             spinSpeed: Math.round((Math.random() * (0.5 - 0.1) + 0.1) * 10) / 10,
-            delay: Math.random() * 0.5,
+            delay: Math.random() * 0.1,
         }));
     }, [count]);
 

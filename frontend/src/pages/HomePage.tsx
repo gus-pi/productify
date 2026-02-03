@@ -37,6 +37,11 @@ const HomePage = () => {
                 </Canvas>
             </div>
 
+            <div className="fixed inset-0 z-0 pointer-events-none">
+                {/* Bottom fade to base color so the field can "end" gracefully */}
+                <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-b from-transparent to-base-100" />
+            </div>
+
             {/* Home content (still under App's z-10 shell, but this is fine) */}
             <div className="relative">
                 {/* HERO */}
