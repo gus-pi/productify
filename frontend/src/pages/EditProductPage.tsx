@@ -3,7 +3,6 @@ import { Link, useNavigate, useParams } from 'react-router';
 import { useProduct, useUpdateProduct } from '../hooks/useProducts';
 import LoadingSpinner from '../components/LoadingSpinner';
 import EditProductForm from '../components/EditProductForm';
-import { useState } from 'react';
 import type { NewProduct } from '../lib/types';
 
 const EditProductPage = () => {

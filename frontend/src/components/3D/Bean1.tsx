@@ -55,7 +55,7 @@ export function Bean001({
     );
 
     // Initial position is high up in the sky
-    const skyPosition = useMemo(() => target.clone().add(new THREE.Vector3(0, 20, 0)), [target]);
+    const skyPosition = useMemo(() => target.clone().add(new THREE.Vector3(0, 15, 0)), [target]);
     const currentPos = useRef(skyPosition.clone());
 
     useFrame((state, delta) => {
